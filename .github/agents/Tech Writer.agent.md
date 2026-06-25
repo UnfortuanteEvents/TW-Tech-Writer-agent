@@ -14,6 +14,62 @@ Perform the specified Task on the relevant Jira issue.
 - Use bold for headings inside Jira issue descriptions
 - Do not use section breaks is Jira issue descriptions
 
+## Response format
+
+For every task response, always end with:
+
+- **Steps completed (by last prompt):** [brief summary of what was completed]
+- **Next step in sequence:** [the next numbered task or "Stop and wait for manual trigger"]
+
+## Workflow tracking in Jira description
+
+Keep a **TW Agent status** section at the top of the Jira issue description so anyone can see status at a glance.
+
+Color coding is not reliable in Jira markdown, so use clear text labels plus strikethrough:
+
+- Completed steps: prefix with `[DONE]` and strike through the full line with `~~...~~`
+- Remaining steps: prefix with `[TO DO]` and do not strike through
+
+Required format:
+
+```
+**TW Agent status**
+
+- [TO DO] 1 - Categorization (AKA Begin)
+- [TO DO] 2 - Context
+- [TO DO] 3 - Preliminary scope
+- [TO DO] 4 - Structural review
+- [TO DO] 5 - Structuring
+- [TO DO] 6 - Cleaning
+- [TO DO] 7 - Working files
+- [TO DO] 8 - Populate children
+- [TO DO] 9 - Scope microcopy
+- [TO DO] 10 - Scope help center
+- [TO DO] 11 - Approve scope
+- [TO DO] 12 - Scope Pendo
+- [TO DO] 13 - Draft microcopy
+- [TO DO] 14 - Create help center PR
+- [TO DO] 15 - Publish to knowledge base
+```
+
+After completing any task (or group of tasks completed in one run), immediately update this section in the Jira description:
+
+- Convert each completed step line to `[DONE]` and strike it through
+- Leave all remaining steps as `[TO DO]`
+- Keep step numbering unchanged
+- Keep this section at the top of the description after each update
+
+## Due date handling
+
+Set the Jira issue **Due date** only when it can be identified confidently from a linked issue's planned release date.
+
+Rules:
+
+- Source of truth: the linked issue's release date (or an explicit release date stated on that linked issue)
+- Be conservative: if multiple plausible dates exist, choose the earliest credible release date
+- If the release date cannot be identified confidently, do not guess and leave the Due date blank
+- Do not infer from vague language (for example, "soon", "next sprint", or quarter-only statements)
+
 ---
 
 ## Tasks
@@ -44,6 +100,8 @@ Read only the issue, its children, and any linked issues to categorize the issue
 
 If and only if you can categorize the issue, proceed to **Context**.
 
+After categorization, attempt to set the issue Due date using the **Due date handling** rules above.
+
 ---
 
 ### 2 - Context
@@ -56,6 +114,7 @@ Before writing anything, check whether the issue already has a description:
 
 - If it does, preserve the existing description at the bottom, separated from the new content by a line of five stars: `*****`
 - Write the new description entirely above this separator, starting from scratch
+- Ensure the **TW Agent status** section exists at the top of the new description and reflects current completion state
 - Consider the existing description as context when writing the new description — any relevant information from it should be reflected in the new description above the separator
 - Having the same information in both the new and original descriptions is intentional; the original (below the stars) will be deleted manually after review
 
@@ -63,12 +122,12 @@ Add the gathered background information to the issue description using the appro
 
 **Release**
 - Summary of release (2–3 sentences describing the release and its rationale)
-- UX impact (likely impact on the user experience, such as new pages, new or changed UI elements, and so on)
-- Original request (explicit Technical Writing requests only — do not infer)
+- UX change summary (high-level; likely impact on the user experience, such as new pages, new or changed UI elements, and so on)
+- Request (original) (explicit Technical Writing requests only — do not infer)
 
 **Foundations and Enablement**
-- Problem statement (the underlying issue or opportunity)
-- Original request (explicit Technical Writing requests only — do not infer)
+- UX change summary (high-level; the underlying issue or opportunity and expected user-visible impact)
+- Request (original) (explicit Technical Writing requests only — do not infer)
 
 Once you complete the Context, stop and wait.
 
@@ -85,9 +144,9 @@ Based on the Context, identify roughly what deliverables Technical Writing needs
 - Pendo guides — creating, updating, deleting, or otherwise changing Pendo guides
 - EAP — creating, updating, deleting, or otherwise changing Early Access Program documentation
 
-You are not to plan out the deliverables in detail, but rather identify positively or negatively whether each of these delvierables is likely to be in scope. The one exception is that if the Original request explicitly calls for a specific deliverable, you should mark that deliverable as in scope.
+You are not to plan out the deliverables in detail, but rather identify positively or negatively whether each of these delvierables is likely to be in scope. The one exception is that if the Request (original) explicitly calls for a specific deliverable, you should mark that deliverable as in scope.
 
-Add this information to the issue description in a new section called **Refined request** with a section for in-scope and out-of-scope deliverables. Note explicitly where the Requirements contradicts or goes beyond the Original request (if any).
+Add this information to the issue description in a new section called **Request (refined)** with a section for in-scope and out-of-scope deliverables. Note explicitly where the Requirements contradicts or goes beyond the Request (original) (if any).
 
 Once you complete the Preliminary scope, proceed to **Structural review**.
 
@@ -95,7 +154,7 @@ Once you complete the Preliminary scope, proceed to **Structural review**.
 
 ### 4 - Structural review
 
-Based on the Requirements, decide whether this issue type (eg, epic, story, subtask) should be changed. Note that stories should be completable within one or two sprints. Consider what child issues (if any) would be required, which will likely align with the deliverables identified in the Refined request. When this happens, suggest naming the child issues according to the deliverables they align with.
+Based on the Requirements, decide whether this issue type (eg, epic, story, subtask) should be changed. Note that stories should be completable within one or two sprints. Consider what child issues (if any) would be required, which will likely align with the deliverables identified in the Request (refined). When this happens, suggest naming the child issues according to the deliverables they align with.
 
 Add your recommendation to the issue description in a new section called **Structuring advice**.
 
@@ -115,8 +174,8 @@ Once you complete the Structuring step, immediately proceed to **Cleaning**.
 
 Update the issue description as follows:
 
-- Remove the **Original request** section
-- Rename **Refined request** to **Requirements**
+- Remove the **Request (original)** section
+- Rename **Request (refined)** to **Requirements**
 - Remove the **Structuring advice** section (the restructuring has now been applied)
 
 Once you complete the Cleaning step, immediately proceed to **Working files**.
@@ -152,13 +211,12 @@ Add a new **Working files** section to the issue description. Use markdown hyper
 ```
 ## Working files
 
-- [Working folder](https://drive.google.com/drive/folders/<folder_id>)
 - [Microcopy](https://docs.google.com/spreadsheets/d/<sheet_id>/edit)
 - Help center (markdown KB repo)
 - [Pendo guides](https://docs.google.com/document/d/<doc_id>/edit)
 ```
 
-Always include the Working folder line first. Include only lines for in-scope deliverables. Keep the Help center line as plain text (not a hyperlink) until the branch is created in Task 11.
+Include only lines for in-scope deliverables. Keep the Help center line as plain text (not a hyperlink) until the branch is created in Task 11.
 
 ---
 
@@ -178,7 +236,7 @@ Each child issue is named after the deliverable it covers (e.g. `Help center`, `
 Set the child issue's description to the following:
 
 ```
-**Requirement**
+**Requirements**
 
 [Requirement text from parent's Requirements section for this deliverable]
 
@@ -230,6 +288,8 @@ Add the microcopy requirements to the Microcopy working file (Google Sheet) link
 
 Group rows by page, adding a blank row between each page's items for readability. Include a row for each microcopy item on pages being deleted, leaving **New microcopy** blank and noting "DELETE" in the **Notes** column.
 
+For dialogs/modals, use a single row per dialog/modal and represent the text in plain text segments separated by `|` in this order: Heading | Body | CTA 1 | CTA 2 (add more CTA segments if needed).
+
 Also add a brief summary of the microcopy requirements to the issue description, organized by page.
 
 ---
@@ -238,7 +298,7 @@ Also add a brief summary of the microcopy requirements to the issue description,
 
 Gather and analyze available resources to define what help center changes are required for this issue.
 
-**Stage 1 — UX change summary**
+**Stage 1 — UX change summary (detailed)**
 
 Collect relevant materials from the following sources only:
 
@@ -294,7 +354,7 @@ Report any additional articles found that were not already identified in Stage 2
 Add two new sections to the issue description:
 
 ```
-**UX change summary**
+**UX change summary (detailed)**
 
 | Change | Type | Details |
 |---|---|---|

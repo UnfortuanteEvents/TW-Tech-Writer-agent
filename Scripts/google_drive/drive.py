@@ -577,9 +577,13 @@ def _parse_markdown_to_paras(content):
         hm = re.match(r'^(#{1,4})\s+(.+)', line)
         if hm:
             flush()
-            level = len(hm.group(1))
+            num_hashes = len(hm.group(1))
+            if num_hashes == 1:
+                style = 'TITLE'
+            else:
+                style = f'HEADING_{num_hashes - 1}'
             paras.append({
-                'style': f'HEADING_{level}',
+                'style': style,
                 'runs': _parse_inline(hm.group(2).strip()),
                 'list': None, 'nesting': 0,
                 'table': None, 'para_bg': None,
@@ -896,6 +900,15 @@ def write_markdown_to_doc(doc_id, file_paths):
         url_map = _load_kb_url_map(str(p.resolve()))
         content = _preprocess_markdown_links(content, url_map)
         paras = _parse_markdown_to_paras(content)
+
+        file_url = url_map.get(p.stem.lower())
+        if file_url:
+            paras.insert(0, {
+                'style': 'NORMAL_TEXT',
+                'runs': [{'text': file_url, 'link': file_url}],
+                'list': None, 'nesting': 0,
+                'table': None, 'para_bg': None,
+            })
 
         tab_id, start_index = _find_or_create_tab(docs_service, doc_id, tab_name)
 

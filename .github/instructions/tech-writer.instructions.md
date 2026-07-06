@@ -20,39 +20,29 @@ Otherwise, perform the specified task on the relevant Jira issue.
 
 ## Task index
 
-| #  | Task                       | Skill                          |
-|----|----------------------------|--------------------------------|
-| 1  | Categorization (AKA Begin) | `01-categorize`                |
-| 2  | Context                    | `02-context`                   |
-| 3  | Preliminary scope          | `03-preliminary-scope`         |
-| 4  | Structural review          | `04-structural-review`         |
-| 5  | Structuring                | `05-structuring`               |
-| 6  | Cleaning                   | `06-cleaning`                  |
-| 7  | Working files              | `07-working-files`             |
-| 8  | Populate children          | `08-populate-children`         |
-| 9  | Scope microcopy            | `09-scope-microcopy`           |
-| 10 | Scope help center          | `10-scope-help-center`         |
-| 11 | Approve scope              | `11-approve-scope`             |
-| 12 | Scope Pendo                | `12-scope-pendo`               |
-| 13 | Draft microcopy            | `13-draft-microcopy`           |
-| 14 | Create help center PR      | `14-create-help-center-pr`     |
-| 15 | Publish to knowledge base  | `15-publish-to-knowledge-base` |
+| #  | Task                      | Skill                          |
+|----|---------------------------|--------------------------------|
+| 1  | Intake                    | `01-intake`                    |
+| 2  | Approve intake            | `02-approve-intake`            |
+| 3  | Scope microcopy           | `03-scope-microcopy`           |
+| 4  | Scope help center         | `04-scope-help-center`         |
+| 5  | Approve scope             | `05-approve-scope`             |
+| 6  | Scope Pendo               | `06-scope-pendo`               |
+| 7  | Draft microcopy           | `07-draft-microcopy`           |
+| 8  | Create help center PR     | `08-create-help-center-pr`     |
+| 9  | Publish to knowledge base | `09-publish-to-knowledge-base` |
 
 ## Sequencing and manual-trigger checkpoints
 
-Most tasks flow directly into the next, but **stop and wait for a manual trigger** at these
-checkpoints:
+Task 1 (Intake) runs all four intake steps in sequence, then **stops and waits for a
+manual trigger**:
 
-- **After Task 2 (Context):** a TW reviews Categorization and Context.
-- **After Task 4 (Structural review):** a TW reviews Preliminary scope and Structural review.
+- **After Task 1 (Intake):** a TW reviews the full intake output (Categorization, Context,
+  Preliminary scope, and Structural review) and makes any necessary adjustments.
 
-Direct progressions when not at a checkpoint:
+Task 2 (Approve intake) runs all four approve-intake steps in sequence with no stop.
 
-- Task 1 → Task 2 (only if the issue can be categorized)
-- Task 3 → Task 4
-- Task 5 → Task 6 → Task 7
-
-All other tasks (8–15) are triggered individually unless the prompt says otherwise.
+All other tasks (3–9) are triggered individually unless the prompt says otherwise.
 
 After completing any task, update the **TW Agent status** section in the issue description
 and end with the response format defined in these instructions.
@@ -71,26 +61,30 @@ Required format:
 ```
 ### TW Agent status
 
-- [TO DO] 1 - Categorization (AKA Begin)
-- [TO DO] 2 - Context
-- [TO DO] 3 - Preliminary scope
-- [TO DO] 4 - Structural review
-- [TO DO] 5 - Structuring
-- [TO DO] 6 - Cleaning
-- [TO DO] 7 - Working files
-- [TO DO] 8 - Populate children
-- [TO DO] 9 - Scope microcopy
-- [TO DO] 10 - Scope help center
-- [TO DO] 11 - Approve scope
-- [TO DO] 12 - Scope Pendo
-- [TO DO] 13 - Draft microcopy
-- [TO DO] 14 - Create help center PR
-- [TO DO] 15 - Publish to knowledge base
+- [TO DO] 1 - Intake
+  - [TO DO] 1a - Categorization
+  - [TO DO] 1b - Context
+  - [TO DO] 1c - Preliminary scope
+  - [TO DO] 1d - Structural review
+- [TO DO] 2 - Approve intake
+  - [TO DO] 2a - Structuring
+  - [TO DO] 2b - Cleaning
+  - [TO DO] 2c - Working files
+  - [TO DO] 2d - Populate children
+- [TO DO] 3 - Scope microcopy
+- [TO DO] 4 - Scope help center
+- [TO DO] 5 - Approve scope
+- [TO DO] 6 - Scope Pendo
+- [TO DO] 7 - Draft microcopy
+- [TO DO] 8 - Create help center PR
+- [TO DO] 9 - Publish to knowledge base
 ```
 
 After completing any task (or group of tasks in one run), immediately update this section:
 
-- Convert each completed step line to `[DONE]` and strike it through
+- Convert each completed step line to `[DONE]` and strike it through with `~~...~~`
+- For Tasks 1 and 2, also strike through and mark `[DONE]` each completed sub-task line
+- When all sub-tasks of Task 1 or Task 2 are done, mark the parent line `[DONE]` as well
 - Leave all remaining steps as `[TO DO]`
 - Keep step numbering unchanged
 - Keep this section at the top of the description after each update

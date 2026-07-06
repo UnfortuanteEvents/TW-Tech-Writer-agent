@@ -1,10 +1,10 @@
 ---
-name: 09-scope-microcopy
-description: 'Task 9 of the Tech Writer workflow. Use to analyze UI changes for a Cin7 Jira issue and populate microcopy requirements (Location, Element, Current, Notes) into the Microcopy working Google Sheet, plus a summary in the issue description.'
+name: 03-scope-microcopy
+description: 'Task 3 of the Tech Writer workflow. Use to analyze UI changes for a Cin7 Jira issue and populate microcopy requirements (Location, Element, Current, Notes) into the Microcopy working Google Sheet, plus a summary in the issue description.'
 argument-hint: 'Jira issue ID'
 ---
 
-# Task 9 — Scope microcopy
+# Task 3 — Scope microcopy
 
 Map the UI changes for this issue to specific microcopy requirements.
 
@@ -62,9 +62,9 @@ seven columns:
 | Location | The app page or area where the microcopy appears | Agent |
 | Element | The specific UI element (e.g. button label, tooltip, field placeholder) | Agent |
 | Current | The existing text if you are confident of it; `UNKNOWN` if you are unsure; `NEW` if the element is new and has no existing microcopy | Agent |
-| New | Leave blank for now (populated in Task 13) | Agent (leave blank) |
+| New | Leave blank for now (populated in Task 7) | Agent (leave blank) |
 | Notes | Any additional context, such as whether the item is new, updated, or deleted | Agent |
-| Questions/Comments | Feedback or open questions for Product/Design (optional; typically completed after Task 13) | Manual |
+| Questions/Comments | Feedback or open questions for Product/Design (optional; typically completed after Task 7) | Manual |
 | QA | QA sign-off or review status (optional; typically completed post-draft) | Manual |
 
 Populate Location, Element, Current, and Notes columns only; leave New,

@@ -1,10 +1,10 @@
 ---
-name: 11-approve-scope
-description: 'Task 11 of the Tech Writer workflow. Use to approve Help center scope for a Cin7 Jira issue — either by publishing scoped articles to a Google Doc working file, or by creating a Help center branch in the TW-Knowledge-bases-markdown repo.'
+name: 05-approve-scope
+description: 'Task 5 of the Tech Writer workflow. Use to approve Help center scope for a Cin7 Jira issue — either by publishing scoped articles to a Google Doc working file, or by creating a Help center branch in the TW-Knowledge-bases-markdown repo.'
 argument-hint: 'Jira issue ID, then approval type: "Approve and make Google working files" or "Approve and make branch"'
 ---
 
-# Task 11 — Approve scope
+# Task 5 — Approve scope
 
 Approve the Help center scope for the issue using one of two paths, chosen by the user.
 
@@ -28,7 +28,7 @@ Fetch the issue and identify:
 
 ## Step 2 — Read article filenames from the Scope table
 
-In the issue description, find the `### Scope` section (written by Task 10). Extract every
+In the issue description, find the `### Scope` section (written by Task 4). Extract every
 article title where the **Action** column is **Update** or **Create**. Skip rows where
 Action is **Delete**.
 

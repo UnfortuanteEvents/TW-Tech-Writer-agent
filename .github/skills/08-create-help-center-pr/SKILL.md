@@ -1,10 +1,10 @@
 ---
-name: 14-create-help-center-pr
-description: 'Task 14 of the Tech Writer workflow. Use to open a pull request for Help center markdown updates in the TW-Knowledge-bases-markdown repo, targeting master from the issue-key branch, listing the changed .md files.'
+name: 08-create-help-center-pr
+description: 'Task 8 of the Tech Writer workflow. Use to open a pull request for Help center markdown updates in the TW-Knowledge-bases-markdown repo, targeting master from the issue-key branch, listing the changed .md files.'
 argument-hint: 'Jira issue ID'
 ---
 
-# Task 14 — Create help center PR
+# Task 8 — Create help center PR
 
 Create a pull request for Help center markdown updates in `TW-Knowledge-bases-markdown`.
 

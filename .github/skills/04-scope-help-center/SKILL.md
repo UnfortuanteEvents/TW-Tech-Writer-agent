@@ -1,10 +1,10 @@
 ---
-name: 10-scope-help-center
-description: 'Task 10 of the Tech Writer workflow. Use to do a targeted + broad review of Core/Omni markdown knowledge base articles for a Cin7 Jira issue, recording a Scope table in the issue description.'
+name: 04-scope-help-center
+description: 'Task 4 of the Tech Writer workflow. Use to do a targeted + broad review of Core/Omni markdown knowledge base articles for a Cin7 Jira issue, recording a Scope table in the issue description.'
 argument-hint: 'Jira issue ID'
 ---
 
-# Task 10 — Scope help center
+# Task 4 — Scope help center
 
 Using the pre-written UX change summary, identify what help center changes are required
 for this issue.

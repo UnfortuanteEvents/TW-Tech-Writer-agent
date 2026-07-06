@@ -16,24 +16,42 @@ Collect relevant materials from the following sources only:
 - External files (e.g. Figma designs, Confluence pages, Google Drive docs) that are
   explicitly referenced in or attached to one of the above issues
 
+When evaluating the available sources, prefer in this order:
+
+1. **Ideal:** Figma designs, Claude mock-ups, or interactive prototypes
+2. **Acceptable:** Screenshots or written explanation of the UI changes
+
+If only a written explanation is available, note this in the microcopy summary added to
+the issue description.
+
 Do not browse third-party apps independently to find additional resources.
 
 ## Analysis
 
-Using the gathered resources, identify microcopy requirements by examining the UI changes
-involved:
+Using the gathered resources and the product model for the relevant product (Core or Omni),
+identify microcopy requirements by examining the UI changes involved. Use the product
+model's navigation architecture to anchor each affected page to its level-1 and level-2
+location before drilling down to the specific page or section.
 
-- Identify existing app pages that have microcopy requirements (new, updated, or deleted
-  microcopy)
-- Identify new app pages (all microcopy will be new, or migrated from an existing page)
-- Identify existing app pages that will be deleted (microcopy will be deleted or migrated
-  to another page)
+Categorize affected pages as follows:
 
-For each affected page — except those being deleted — determine:
+- **Updated pages** — existing app pages (including modals and dialogs) that have
+  microcopy requirements (new, updated, or deleted microcopy)
+- **New pages** — new app pages (including modals and dialogs) where all microcopy will be
+  new or migrated from an existing page
+- **Deleted pages** — existing app pages (including modals and dialogs) that will be
+  removed (microcopy will be deleted or migrated to another page)
 
-- What new microcopy is needed
-- What existing microcopy needs updating
-- What existing microcopy needs deleting
+For each updated or new page, apply the following template — repeat it unchanged for every
+page; do not vary the structure:
+
+> **Page:** [level-1 > level-2 > page name, from the product model — e.g. `Sales > Sales Orders > Filters panel`]
+> - **New microcopy needed:** [describe each item, or "None"]
+> - **Existing microcopy to update:** [describe each item, or "None"]
+> - **Existing microcopy to delete:** [describe each item, or "None"]
+
+For deleted pages, note each one separately and record what happens to its microcopy
+(deleted or migrated to another page).
 
 ## Output
 

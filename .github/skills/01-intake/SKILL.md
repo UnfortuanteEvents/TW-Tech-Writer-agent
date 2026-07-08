@@ -96,13 +96,20 @@ Collect relevant materials from the following sources only:
 - External files (e.g. Figma designs, Confluence pages, Google Drive docs) explicitly
   referenced in or attached to one of the above issues
 
-Using the gathered resources, produce a detailed summary of all UX changes:
+Using the gathered resources, produce a detailed summary of all UX changes.
+
+The UX change summary covers only changes to the product application itself — that is,
+changes a user would encounter while using the software. Record only:
 
 - **Visible changes:** design changes (new/changed/removed pages, buttons, toggles,
   fields, or other interactive UI elements) and microcopy changes (labels, messages,
   tooltips, placeholders)
 - **Functional changes:** behind-the-scenes logic changes (e.g. different journals
   created, data mapping changes, workflow changes, new validations)
+
+Do not include TW deliverables in this summary. Content such as help center articles,
+Pendo guides, or microcopy documents is produced as a result of this analysis (see
+Stage 2) and is not a UX change.
 
 Note explicitly if a Figma file or microcopy document could not be found.
 

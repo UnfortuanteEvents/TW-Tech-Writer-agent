@@ -115,8 +115,7 @@ update to the GitHub URL when the repo is published).
 
 The repo is organized into four folders:
 
-- `Help center/` — editorial guidelines, structural guidelines, EAP delivery options, and
-  product-specific help center TOC structure
+- `Help center/` — editorial guidelines, structural guidelines, and EAP delivery options
 - `Microcopy/` — microcopy guidelines and email guidelines
 - `Pendo/` — guide structure, setup, and writing guidelines
 - `Product/` — navigation hierarchies for Core and Omni
@@ -134,6 +133,22 @@ Product-specific files are prefixed with the product name (e.g. `Core navigation
 3. If `Core`, skip files prefixed with `Omni`.
 4. If `Omni`, skip files prefixed with `Core`.
 5. If `Unknown`, load all files (both Core and Omni navigation files are included).
+
+**Help center TOC and articles:**
+
+The help center TOC and article content live in the `TW-Knowledge-bases-markdown` repo,
+not in TW-Context.
+
+| What | Path |
+|---|---|
+| Core TOC | `c:\Users\RichardBeer\Repos\TW-Knowledge-bases-markdown\Core\_Metadata\TOC.md` |
+| Omni TOC | `c:\Users\RichardBeer\Repos\TW-Knowledge-bases-markdown\Omni\_Metadata\TOC.md` |
+| Core articles | `c:\Users\RichardBeer\Repos\TW-Knowledge-bases-markdown\Core\` |
+| Omni articles | `c:\Users\RichardBeer\Repos\TW-Knowledge-bases-markdown\Omni\` |
+
+Read the TOC file on demand when you need the help center structure. Do not preload all
+articles — the folder contains 400+ files. Use file_search or read_file on the relevant
+product folder to find and read specific articles when needed.
 
 ## Working with Jira
 
